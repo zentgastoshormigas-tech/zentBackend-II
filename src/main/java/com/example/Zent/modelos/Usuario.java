@@ -3,6 +3,7 @@ package com.example.Zent.modelos;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.example.Zent.modelos.utils.TipoDeEstado;
 import com.example.Zent.modelos.utils.TipoDocumento;
 
 import jakarta.persistence.Column;
@@ -24,25 +25,35 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "nombres_completos", nullable = false, unique = false, length = 50)
     private String nombres;
+
     @Column(name = "tipo_documento", nullable = false, unique = false, length = 20)
     @Enumerated(EnumType.STRING)
     private TipoDocumento tipoDocumento;
+
     @Column(name = "documento", nullable = false, unique = true, length = 20)
     private String documento;
+
     @Column(name = "edad", nullable = false, unique = false, length = 3)
     private Integer edad;
+
     @Column(name = "correo", nullable = false, unique = true, length = 100)
     private String correo;
+
     @Column(name = "fecha_nacimiento", nullable = false, unique = false)
     private LocalDate fechaNacimiento;
+
     @Column(name = "telefono", nullable = false, unique = false, length = 20)
     private String telefono;
+
     @Column(name = "fecha_registro", nullable = false, unique = false)
     private LocalDate fechaRegistro;
+
     @Column(name = "estado", nullable = false, unique = false)
-    private Boolean estado;
+    @Enumerated(EnumType.STRING)
+    private TipoDeEstado estado;
 
     
     //creando una relacion con el modelo de gastos
@@ -55,7 +66,7 @@ public class Usuario {
         this.gastos = new java.util.ArrayList<>();
     }
 
-    public Usuario(String correo, String documento, Integer edad, Boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro, String nombres, String telefono, TipoDocumento tipoDocumento) {
+    public Usuario(String correo, String documento, Integer edad, TipoDeEstado estado, LocalDate fechaNacimiento, LocalDate fechaRegistro, String nombres, String telefono, TipoDocumento tipoDocumento) {
         this.correo = correo;
         this.documento = documento;
         this.edad = edad;
@@ -140,11 +151,11 @@ public class Usuario {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Boolean getEstado() {
+    public TipoDeEstado getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(TipoDeEstado estado) {
         this.estado = estado;
     }
 

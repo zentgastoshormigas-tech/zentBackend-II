@@ -19,12 +19,16 @@ public class Gasto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "descripcion", nullable = false, unique = false, length = 255)
+
+    @Column(name = "descripcion", nullable = true, unique = false, length = 255)
     private String descripcion;
+
     @Column(name = "fecha_registro", nullable = false, unique = false)
     private LocalDate fechaRegistro;
+
     @Column(name = "valor", nullable = false, unique = false, precision = 10, scale = 2)
     private Double valor;
+
     @Column(name = "imagen", nullable = true, unique = false, length = 255)
     private String imagen;
 
