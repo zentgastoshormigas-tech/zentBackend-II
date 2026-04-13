@@ -4,9 +4,6 @@ package com.example.Zent.modelos;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.example.Zent.modelos.Gasto;
-
-
 
 
 import jakarta.persistence.Column;
@@ -53,7 +50,6 @@ public class Comercio {
 
 
     public Comercio() {
-        this.gastos = new java.util.ArrayList<>();
     }
 
 

@@ -1,5 +1,5 @@
 package com.example.Zent.modelos;
 
 public class MedioDePago {
-    //id, nombre, franquicia, estado
+    //id, nombre, franquicia, estado, descripcion
 }

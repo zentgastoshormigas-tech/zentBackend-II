@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.example.Zent.modelos.utils.TipoDeEstado;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
