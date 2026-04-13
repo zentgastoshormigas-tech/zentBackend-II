@@ -1,4 +1,4 @@
-package com.example.Zent.repositorios;
+package com.example.Zent.repository;
 
 import java.time.LocalDate;
 import java.util.List;
