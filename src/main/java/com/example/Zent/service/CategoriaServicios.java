@@ -28,11 +28,11 @@ public class CategoriaServicios {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "peticion invalida");
         }
 
-        //validar que el codigo tenga al menos 5 caracteres
-        if(datosCategoria.getCodigo() > 0){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El numero de cacteres tiene que ser mayor a 6");
+        //validar que el responsable tenga mas de letras su anonimato
+        if(datosCategoria.getResponsable().length() <  4){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El numero de cacteres tiene que ser mayor a 4");
         }
-
+        //validar que la fecha no sea futura
         if(datosCategoria.getFechaCreacion().isAfter(LocalDate.now())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No tienes fecha correcta");
         }
@@ -43,7 +43,7 @@ public class CategoriaServicios {
     }
 
     //funcion para listar todas las categorias
-    public List<Categoria> listar_Usuarios(){
+    public List<Categoria> listar_Categorias(){
         return categoriaRepo.findAll();
     }
     
