@@ -11,5 +11,5 @@ import com.example.Zent.modelos.Gasto;
 public interface IGastoRepositorio extends JpaRepository<Gasto, Integer> {
     List<Gasto> findByValor(Double valor);
     
-    List<Gasto> findByFecha(LocalDate fecha);
+    List<Gasto> findByFechaRegistro(LocalDate fechaRegistro);
 }

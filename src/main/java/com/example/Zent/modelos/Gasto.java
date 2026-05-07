@@ -20,30 +20,30 @@ public class Gasto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "descripcion", nullable = true, unique = false, length = 255)
+    @Column(name = "descripcion", nullable = false, unique = false, length = 255)
     private String descripcion;
 
     @Column(name = "fecha_registro", nullable = false, unique = false)
     private LocalDate fechaRegistro;
 
-    @Column(name = "valor", nullable = false, unique = false, precision = 10, scale = 2)
+    @Column(name = "valor", nullable = false, unique = false)
     private Double valor;
 
-    @Column(name = "imagen", nullable = true, unique = false, length = 255)
+    @Column(name = "imagen", nullable = false, unique = false, length = 255)
     private String imagen;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    @Column(name = "establecimiento", nullable = true, unique = false, length = 255)
+    @Column(name = "establecimiento", nullable = false, unique = false, length = 255)
     private String establecimiento;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medio_pago_id")
     private MedioDePago medioPago;
 
-    @Column(name = "notas", nullable = true, unique = false, length = 255)
+    @Column(name = "notas", nullable = false, unique = false, length = 255)
     private String notas;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -52,7 +52,7 @@ public class Gasto {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comercio_id")
-    private Comercio comercio;
+    private ComercioUno comercio;
 
     //creando una relacion con el modelo de usuario
     //yo como gasto me relaciono con un usuario, es decir, un gasto pertenece a un usuario
@@ -60,7 +60,7 @@ public class Gasto {
     public Gasto() {
     }
 
-    public Gasto(String descripcion, LocalDate fechaRegistro, Double valor, String imagen, Categoria categoria, String establecimiento, MedioDePago medioPago, String notas, Usuario usuario, Comercio comercio) {
+    public Gasto(String descripcion, LocalDate fechaRegistro, Double valor, String imagen, Categoria categoria, String establecimiento, MedioDePago medioPago, String notas, Usuario usuario, ComercioUno comercio) {
         this.descripcion = descripcion;
         this.fechaRegistro = fechaRegistro;
         this.valor = valor;
@@ -153,11 +153,11 @@ public class Gasto {
         this.usuario = usuario;
     }
 
-    public Comercio getComercio() {
+    public ComercioUno getComercio() {
         return comercio;
     }
 
-    public void setComercio(Comercio comercio) {
+    public void setComercio(ComercioUno comercio) {
         this.comercio = comercio;
     }
 
