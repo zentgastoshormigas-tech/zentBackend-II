@@ -2,6 +2,7 @@ package com.example.Zent.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,7 +49,47 @@ public class CategoriaServicios {
     }
     
     //funcion para modificar un usuario
+    public Categoria modificar_categoria(Integer id, Categoria datosNuevos){
+        Optional <Categoria> categoria_que_busco=categoriaRepo.findById(id);
+        if(categoria_que_busco.isEmpty()){
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST, "categoria no encontrado"
+            );
+        }else{
+            Categoria categoria_encontrada=categoria_que_busco.get();
+            //modificamos datos
+            categoria_encontrada.setNombre(datosNuevos.getNombre());
+            categoria_encontrada.setCodigo(datosNuevos.getCodigo());
+            return categoriaRepo.save(categoria_encontrada);
+        }
+    }
+
     //funcion para eliminar un usuario por id
+    public boolean eliminar_categoria(Integer id){
+
+        Optional <Categoria> usuario_que_busco=categoriaRepo.findById(id);
+        if (usuario_que_busco.isEmpty()) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST, "Usuario no encontrado"
+            );
+        }else{
+            categoriaRepo.deleteById(id);
+            return true;
+            }
+        }
+
     //funcion para buscar un usuario por id
+        public Categoria  buscar_categoria_por_id(Integer id){
+
+        Optional <Categoria> categoria_que_busco=categoriaRepo.findById(id);
+        if (categoria_que_busco.isEmpty()) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST, "Usuario no encontrado"
+            );
+        }else{
+            return categoria_que_busco.get();
+            
+        }
+    }
 
 }

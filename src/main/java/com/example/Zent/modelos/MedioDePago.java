@@ -18,12 +18,12 @@ public class MedioDePago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "nombres_completos", nullable = false, unique = false, length = 100)
+    @Column(name = "nombre", nullable = false, unique = false, length = 255)
     private String nombre;
-    @Column(name = "nombres_completos", nullable = false, unique = false, length = 30)
+    @Column(name = "franquicia", nullable = false, unique = false, length = 255)
     @Enumerated(EnumType.STRING)
     private TipoFranquicia franquicia;
-    @Column(name = "nombres_completos", nullable = false, unique = false)
+    @Column(name = "estado", nullable = false, unique = false)
     private Boolean estado;
     
     

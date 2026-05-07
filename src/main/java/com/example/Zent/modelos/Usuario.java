@@ -26,20 +26,20 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombres_completos", nullable = false, unique = false, length = 50)
+    @Column(name = "nombres_completos", nullable = false, unique = false, length = 255)
     private String nombres;
 
-    @Column(name = "tipo_documento", nullable = false, unique = false, length = 20)
+    @Column(name = "tipo_documento", nullable = false, unique = false, length =255)
     @Enumerated(EnumType.STRING)
     private TipoDocumento tipoDocumento;
 
-    @Column(name = "documento", nullable = false, unique = true, length = 20)
+    @Column(name = "documento", nullable = false, unique = true, length = 255)
     private String documento;
 
-    @Column(name = "edad", nullable = false, unique = false, length = 3)
+    @Column(name = "edad", nullable = false, unique = false, length = 255)
     private Integer edad;
 
-    @Column(name = "correo", nullable = false, unique = true, length = 100)
+    @Column(name = "correo", nullable = false, unique = true, length = 255)
     private String correo;
 
     @Column(name = "fecha_nacimiento", nullable = false, unique = false)
