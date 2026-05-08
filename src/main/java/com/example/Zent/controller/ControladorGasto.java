@@ -21,14 +21,14 @@ public class ControladorGasto {
     //funcion controladora para el servicio de guardar gasto
     public ResponseEntity <?> controladorGuardar(@RequestBody Gasto datos) {
         return ResponseEntity.status(HttpStatus.OK).body(
-            servicio.guardar_gasto(datos)
+            servicio.guardarGasto(datos)
         );
     }
 
     //funcion controladora para el servicio de listar todos los gastos
     public ResponseEntity <?> controladorListar() {
         return ResponseEntity.status(HttpStatus.OK).body(
-            servicio.listar_gastos()
+            servicio.listarGastos()
         );
     }
 }
