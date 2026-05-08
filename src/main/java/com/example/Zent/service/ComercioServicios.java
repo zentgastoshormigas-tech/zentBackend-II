@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.Zent.modelos.Comercio;
+import com.example.Zent.modelos.ComercioUno;
 import com.example.Zent.repository.IComercioRepositorio;
 
 @Service
@@ -16,7 +16,7 @@ public class ComercioServicios {
     @Autowired
     private IComercioRepositorio comercioRepositorio;
 
-    public Comercio guardarComercio(Comercio datosComercio){
+    public ComercioUno guardarComercio(ComercioUno datosComercio){
         //validar los campos del modelo segun la logica del negocio
 
         //validar que el comercio me mande su nit
@@ -50,7 +50,7 @@ public class ComercioServicios {
     }
 
     //funcion para listar todos los comercios
-    public List<Comercio> listar_Comercios(){
+    public List<ComercioUno> listar_Comercios(){
         return comercioRepositorio.findAll();
     }
 
