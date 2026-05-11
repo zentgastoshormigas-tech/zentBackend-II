@@ -1,5 +1,8 @@
 package com.example.Zent.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -38,4 +41,43 @@ public class GastosServicios {
             .orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Gasto no encontrado"));
     }
+
+    public List<Gasto> listar_gastos() {
+        return gastoRepositorio.findAll();
+    }
+
+
+    public Gasto modificarGasto(Integer id, Gasto datosNuevos) {
+        Optional<Gasto> gasto_que_busco = gastoRepositorio.findById(id);
+        if(gasto_que_busco.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Gasto no encontrado");
+        }else{
+            Gasto gasto_encontrado = gasto_que_busco.get();
+            //modifiquemos datos
+            gasto_encontrado.setDescripcion(datosNuevos.getDescripcion());
+            gasto_encontrado.setValor(datosNuevos.getValor());
+            return gastoRepositorio.save(gasto_encontrado);
+        }
+    }
+
+
+    public boolean eliminarGasto(Integer id) {
+        Optional<Gasto> gasto_que_busco = gastoRepositorio.findById(id);
+        if(gasto_que_busco.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Gasto no encontrado");
+        }else{
+            gastoRepositorio.deleteById(id);
+            return true;
+        }
+    }
+
+    public Gasto buscar_gasto_id(Integer id){
+        Optional<Gasto> gasto_que_busco = gastoRepositorio.findById(id);
+        if(gasto_que_busco.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Gasto no encontrado");
+        }else{
+            return gasto_que_busco.get();
+        }   
+    }
+
 }
