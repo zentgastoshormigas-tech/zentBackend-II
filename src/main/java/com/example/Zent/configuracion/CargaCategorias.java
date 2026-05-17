@@ -1,6 +1,7 @@
 package com.example.Zent.configuracion;
 
 import com.example.Zent.modelos.Categoria;
+import com.example.Zent.modelos.utils.TipoCategoria;
 import com.example.Zent.modelos.utils.TipoDeEstado;
 import com.example.Zent.repository.ICategoriaRepo;
 
@@ -23,7 +24,16 @@ public class CargaCategorias implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        String[] nombres = {"Alimentos", "Transporte", "Educación", "Salud", "Entretenimiento"};
+           TipoCategoria[] nombres = {
+            TipoCategoria.Alimentacion,
+            TipoCategoria.Transporte,
+            TipoCategoria.Entretenimiento,
+            TipoCategoria.Educacion,
+            TipoCategoria.Tecnologia,
+            TipoCategoria.Hogar
+           };
+
+
         String[] responsables = {"Juan Pérez", "María Gómez", "Carlos López", "Ana Torres", "Luis Ramírez"};
         String[] justificaciones = {"Necesidad básica", "Uso frecuente", "Obligatorio", "Prevención", "Ocio"};
         String[] descripciones = {"Gastos mensuales", "Costos diarios", "Inversión anual", "Chequeos médicos", "Diversión"};
@@ -33,8 +43,8 @@ public class CargaCategorias implements CommandLineRunner {
         Random aleatorio = new Random(42);
         List<Categoria> listaCategorias = new ArrayList<>();
 
-        for (int i = 0; i < 50; i++) {
-            String nombre = nombres[aleatorio.nextInt(nombres.length)];
+                for (int i = 0; i < 50; i++) {
+            TipoCategoria nombre = nombres[aleatorio.nextInt(nombres.length)];
             String responsable = responsables[aleatorio.nextInt(responsables.length)];
             String justificacion = justificaciones[aleatorio.nextInt(justificaciones.length)];
             String descripcion = descripciones[aleatorio.nextInt(descripciones.length)];
@@ -59,4 +69,5 @@ public class CargaCategorias implements CommandLineRunner {
 
         categoriaRepositorio.saveAll(listaCategorias);
     }
+
 }

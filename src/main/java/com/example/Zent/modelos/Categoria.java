@@ -1,9 +1,10 @@
     package com.example.Zent.modelos;
 
-    import java.time.LocalDate;
-    import java.util.List;
+import java.time.LocalDate;
+import java.util.List;
 
-    import com.example.Zent.modelos.utils.TipoDeEstado;
+import com.example.Zent.modelos.utils.TipoCategoria;
+import com.example.Zent.modelos.utils.TipoDeEstado;
 
     import jakarta.persistence.Column;
     import jakarta.persistence.Entity;
@@ -25,8 +26,8 @@
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
-        @Column(name = "nombre", nullable = false, unique = false, length = 255)
-        private String nombre;
+        @Enumerated(EnumType.STRING)
+        private TipoCategoria nombre;
         @Column(name = "fecha_creacion", nullable = false, unique = false)
         private LocalDate fechaCreacion;
         @Column(name = "responsable", nullable = false, unique = false, length = 255)
@@ -51,7 +52,7 @@
         }
 
 
-        public Categoria(Integer id, String nombre, LocalDate fechaCreacion, String responsable, String justificacion,
+        public Categoria(Integer id, TipoCategoria nombre, LocalDate fechaCreacion, String responsable, String justificacion,
                 String descripcion, TipoDeEstado estado, LocalDate fechaModificacion, Integer codigo, List<Gasto> gastos) {
             this.id = id;
             this.nombre = nombre;
@@ -71,7 +72,7 @@
         }
 
 
-        public String getNombre() {
+        public TipoCategoria getNombre() {
             return nombre;
         }
 
@@ -121,7 +122,7 @@
         }
 
 
-        public void setNombre(String nombre) {
+        public void setNombre(TipoCategoria nombre) {
             this.nombre = nombre;
         }
 
