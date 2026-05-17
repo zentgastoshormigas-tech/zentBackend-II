@@ -25,7 +25,7 @@ public class CategoriaServicios {
         //validar los campos del modelo segun la logica del negocio
 
         //validar que la categoria me mande su nombre
-        if(datosCategoria.getNombre() == null || datosCategoria.getNombre().isBlank() || datosCategoria.getNombre().isEmpty()){
+        if(datosCategoria.getNombre() == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "peticion invalida");
         }
 
